@@ -59,7 +59,7 @@ const Player = () => {
               aPlayerInstance.play()
             } catch(err) {
               console.warn('自动播放兜底触发失败', err)
-            })
+            }
           }, 500)
         }
       }
