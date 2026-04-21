@@ -55,7 +55,9 @@ const Player = () => {
         // 兜底：如果自动播放仍未触发，主动调用play
         if (autoPlay) {
           setTimeout(() => {
-            aPlayerInstance.play().catch(err => {
+            try {
+              aPlayerInstance.play()
+            } catch(err) {
               console.warn('自动播放兜底触发失败', err)
             })
           }, 500)
@@ -79,7 +81,7 @@ const Player = () => {
   // 监听用户首次交互（点击/滚动/触摸）
   const listenUserInteraction = () => {
     // 定义交互事件类型
-    const events = ['click', 'touchstart', 'scroll', 'keydown']
+    const events = ['click', 'touchstart', 'keydown']
     
     // 绑定事件（触发后立即解绑，避免重复执行）
     const handleInteraction = () => {
